@@ -6,7 +6,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.Icon
+import android.graphics.drawable.Icon as AndroidIcon
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
@@ -17,8 +17,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,6 +35,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
@@ -58,6 +62,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -152,6 +157,22 @@ fun DiminitySettingsScreen(
     var dimLevel by remember { mutableFloatStateOf(0.35f) }
     var blueFilterLevel by remember { mutableFloatStateOf(0.0f) }
 
+    val versionName = remember(context) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                context.packageManager.getPackageInfo(
+                    context.packageName,
+                    PackageManager.PackageInfoFlags.of(0),
+                ).versionName
+            } else {
+                @Suppress("DEPRECATION")
+                context.packageManager.getPackageInfo(context.packageName, 0).versionName
+            } ?: ""
+        } catch (_: Exception) {
+            ""
+        }
+    }
+
     LaunchedEffect(settingsState) {
         settingsState?.let { settings ->
             dimLevel = settings.dimLevel
@@ -242,6 +263,15 @@ fun DiminitySettingsScreen(
         }
     }
 
+    val onOpenGitHub = {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, "https://github.com/r0madeus/diminity".toUri())
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
@@ -254,7 +284,7 @@ fun DiminitySettingsScreen(
                 .padding(horizontal = 18.dp, vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            HeaderSection()
+            HeaderSection(onOpenGitHub = onOpenGitHub)
 
             Spacer(modifier = Modifier.height(4.dp))
 
@@ -333,7 +363,9 @@ fun DiminitySettingsScreen(
 
             OverlayPermissionInfoCard()
 
-            Spacer(modifier = Modifier.height(24.dp))
+            FooterSection(versionName = versionName)
+
+            Spacer(modifier = Modifier.height(12.dp))
         }
     }
 }
@@ -351,7 +383,7 @@ private fun requestAddQuickSettingsTile(
 
         val componentName = ComponentName(context, DiminityQuickSettingsTile::class.java)
         val executor = ContextCompat.getMainExecutor(context)
-        val tileIcon = Icon.createWithResource(context, R.drawable.ic_stat_diminity)
+        val tileIcon = AndroidIcon.createWithResource(context, R.drawable.ic_stat_diminity)
 
         try {
             statusBarManager.requestAddTileService(
@@ -410,26 +442,53 @@ private fun updateDimOverlayService(context: Context, dimLevel: Float, blueFilte
 }
 
 @Composable
-private fun HeaderSection() {
-    Column {
-        Text(
-            text = stringResource(R.string.app_name),
-            style = MaterialTheme.typography.headlineLarge.copy(
-                fontWeight = FontWeight.Bold,
-                fontSize = 28.sp,
-                letterSpacing = (-0.5).sp,
-            ),
-            color = MaterialTheme.colorScheme.onBackground,
+private fun HeaderSection(
+    onOpenGitHub: () -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = stringResource(R.string.app_name),
+            modifier = Modifier
+                .size(44.dp)
+                .clip(RoundedCornerShape(10.dp)),
         )
 
-        Spacer(modifier = Modifier.height(2.dp))
+        IconButton(
+            onClick = onOpenGitHub,
+            modifier = Modifier.size(48.dp),
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_github),
+                contentDescription = stringResource(R.string.open_github_repository),
+                tint = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.size(24.dp),
+            )
+        }
+    }
+}
 
+@Composable
+private fun FooterSection(
+    versionName: String,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp, bottom = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
         Text(
-            text = stringResource(R.string.header_subtitle),
-            style = MaterialTheme.typography.bodyMedium.copy(
-                fontSize = 15.sp,
+            text = stringResource(R.string.app_footer_info, versionName),
+            style = MaterialTheme.typography.labelMedium.copy(
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Normal,
             ),
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.70f),
         )
     }
 }

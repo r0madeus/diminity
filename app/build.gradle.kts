@@ -1,3 +1,5 @@
+import com.android.build.api.variant.impl.VariantOutputImpl
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -17,6 +19,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    androidResources {
+        localeFilters += listOf("en", "tr", "de", "es", "fr", "pt", "pt-rBR")
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -28,12 +34,31 @@ android {
             signingConfig = buildTypes.getByName("debug").signingConfig
         }
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
         compose = true
+    }
+}
+
+androidComponents {
+    onVariants { variant ->
+        if (variant.buildType == "release") {
+            variant.outputs.forEach { output ->
+                if (output is VariantOutputImpl) {
+                    output.outputFileName.set("Diminity-v${android.defaultConfig.versionName}.apk")
+                }
+            }
+        }
     }
 }
 
