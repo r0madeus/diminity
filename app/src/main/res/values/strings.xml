@@ -47,4 +47,7 @@
     <string name="qs_tile_label">Diminity</string>
     <string name="qs_tile_subtitle_active">Active</string>
     <string name="qs_tile_subtitle_inactive">Off</string>
+
+    <string name="open_github_repository">Open Diminity GitHub repository</string>
+    <string name="app_footer_info">Diminity v%1$s • GPLv3 License • Melih Uçgun</string>
 </resources>

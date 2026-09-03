@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Diminity</string>
+    <string name="header_subtitle">Bildschirmhelligkeit auf ein angenehmeres Niveau senken.</string>
+
+    <string name="extra_dim_title">Zusätzliche Dimmerung</string>
+    <string name="status_active">Aktiv</string>
+    <string name="status_permission_required">Berechtigung erforderlich</string>
+    <string name="status_permission_granted">Berechtigung erteilt</string>
+
+    <string name="theme_mode_title">Design-Modus</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_dark">Dunkel</string>
+
+    <string name="background_protection_title">Hintergrundschutz</string>
+    <string name="background_protection_subtitle">Tippen Sie hier, um die Einstellungen zu öffnen, Diminity auszuwählen und \'Uneingeschränkt\' oder \'Nicht optimieren\' zu wählen, um eine Beendigung des Dienstes zu verhindern.</string>
+
+    <string name="notification_permission_warning">Benachrichtigungsberechtigung ist erforderlich, um die zusätzliche Dimmerung zu aktivieren.</string>
+
+    <string name="presets_title">Voreinstellungen</string>
+    <string name="preset_balanced">Ausgeglichen</string>
+    <string name="preset_night_reading">Nachtlesen</string>
+    <string name="preset_sleep">Schlafen</string>
+    <string name="preset_reset">Zurücksetzen</string>
+
+    <string name="dim_level_title">Dimmerungsstufe</string>
+    <string name="blue_filter_title">Blaulichtfilter</string>
+    <string name="blue_filter_description">Wendet einen weichen, warmen Farbton an, um die Augenbelastung und das blaue Licht zu reduzieren. Für eine komfortable und ausgewogene Nutzung bei mittleren Stufen entwickelt.</string>
+
+    <string name="quick_settings_card_title">Zu Schnelleinstellungen hinzufügen</string>
+    <string name="quick_settings_card_subtitle">Fügen Sie die Diminity-Kachel zu Ihrem Schnelleinstellungsfenster hinzu.</string>
+    <string name="qs_status_added">Schnelleinstellungskachel hinzugefügt.</string>
+    <string name="qs_status_already_added">Schnelleinstellungskachel ist bereits hinzugefügt.</string>
+    <string name="qs_status_not_added">Schnelleinstellungskachel wurde nicht hinzugefügt.</string>
+    <string name="qs_status_error">Schnelleinstellungskachel konnte nicht hinzugefügt werden.</string>
+    <string name="qs_status_unsupported">Das System unterstützt das Hinzufügen von Schnelleinstellungskacheln nicht.</string>
+    <string name="qs_status_requires_android13">Das Hinzufügen von Schnelleinstellungskacheln erfordert Android 13 oder höher.</string>
+
+    <string name="overlay_permission_info">Die Berechtigung \'Über anderen Apps einblenden\' ist erforderlich, damit die App den Bildschirm dimmen kann.</string>
+
+    <string name="service_notification_channel_name">Diminity-Dimmerungsdienst</string>
+    <string name="service_notification_channel_description">Benachrichtigung, die angezeigt wird, während das Bildschirm-Overlay aktiv ist</string>
+    <string name="service_notification_title">Diminity aktiv</string>
+    <string name="service_notification_content">Zusätzliche Dimmerung ist derzeit aktiv.</string>
+    <string name="service_notification_action_stop">Stoppen</string>
+
+    <string name="qs_tile_label">Diminity</string>
+    <string name="qs_tile_subtitle_active">Aktiv</string>
+    <string name="qs_tile_subtitle_inactive">Aus</string>
+
+    <string name="open_github_repository">Diminity-GitHub-Repository öffnen</string>
+    <string name="app_footer_info">Diminity v%1$s • GPLv3 Lizenz • Melih Uçgun</string>
+</resources>

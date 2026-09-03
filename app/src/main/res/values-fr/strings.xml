@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Diminity</string>
+    <string name="header_subtitle">Réduisez la luminosité de votre écran à un niveau plus confortable.</string>
+
+    <string name="extra_dim_title">Luminosité réduite</string>
+    <string name="status_active">Actif</string>
+    <string name="status_permission_required">Autorisation requise</string>
+    <string name="status_permission_granted">Autorisation accordée</string>
+
+    <string name="theme_mode_title">Mode de thème</string>
+    <string name="theme_system">Système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+
+    <string name="background_protection_title">Protection en arrière-plan</string>
+    <string name="background_protection_subtitle">Appuyez ici pour ouvrir les paramètres, trouver Diminity et choisir \'Non restreint\' ou \'Ne pas optimiser\' afin d\'éviter l\'arrêt du service.</string>
+
+    <string name="notification_permission_warning">L\'autorisation de notification est requise pour activer la luminosité réduite.</string>
+
+    <string name="presets_title">Préréglages</string>
+    <string name="preset_balanced">Équilibré</string>
+    <string name="preset_night_reading">Lecture nocturne</string>
+    <string name="preset_sleep">Sommeil</string>
+    <string name="preset_reset">Réinitialiser</string>
+
+    <string name="dim_level_title">Niveau d\'atténuation</string>
+    <string name="blue_filter_title">Filtre de lumière bleue</string>
+    <string name="blue_filter_description">Applique une teinte chaude et douce pour réduire la fatigue oculaire et la lumière bleue. Conçu pour une utilisation confortable et équilibrée à des niveaux moyens.</string>
+
+    <string name="quick_settings_card_title">Ajouter aux Paramètres rapides</string>
+    <string name="quick_settings_card_subtitle">Ajoutez la tuile Diminity à votre panneau de Paramètres rapides.</string>
+    <string name="qs_status_added">Tuile des Paramètres rapides ajoutée.</string>
+    <string name="qs_status_already_added">La tuile des Paramètres rapides est déjà ajoutée.</string>
+    <string name="qs_status_not_added">La tuile des Paramètres rapides n\'a pas été ajoutée.</string>
+    <string name="qs_status_error">Impossible d\'ajouter la tuile des Paramètres rapides.</string>
+    <string name="qs_status_unsupported">Le système ne prend pas en charge l\'ajout de tuiles de Paramètres rapides.</string>
+    <string name="qs_status_requires_android13">L\'ajout de tuiles de Paramètres rapides nécessite Android 13 ou une version ultérieure.</string>
+
+    <string name="overlay_permission_info">L\'autorisation \'Afficher par-dessus d\'autres applications\' est requise pour permettre à l\'application d\'assombrir l\'écran.</string>
+
+    <string name="service_notification_channel_name">Service d\'atténuation Diminity</string>
+    <string name="service_notification_channel_description">Notification affichée lorsque le calque d\'atténuation d\'écran est actif</string>
+    <string name="service_notification_title">Diminity actif</string>
+    <string name="service_notification_content">La luminosité réduite est actuellement active.</string>
+    <string name="service_notification_action_stop">Arrêter</string>
+
+    <string name="qs_tile_label">Diminity</string>
+    <string name="qs_tile_subtitle_active">Actif</string>
+    <string name="qs_tile_subtitle_inactive">Désactivé</string>
+
+    <string name="open_github_repository">Ouvrir le dépôt GitHub de Diminity</string>
+    <string name="app_footer_info">Diminity v%1$s • Licence GPLv3 • Melih Uçgun</string>
+</resources>

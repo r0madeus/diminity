@@ -42,8 +42,12 @@
     <string name="service_notification_channel_description">Ekran karartma overlaysi aktifken gösterilen bildirim</string>
     <string name="service_notification_title">Diminity etkin</string>
     <string name="service_notification_content">Ek karartma şu an çalışıyor.</string>
+    <string name="service_notification_action_stop">Kapat</string>
 
     <string name="qs_tile_label">Diminity</string>
     <string name="qs_tile_subtitle_active">Etkin</string>
     <string name="qs_tile_subtitle_inactive">Kapalı</string>
+
+    <string name="open_github_repository">Diminity GitHub deposunu aç</string>
+    <string name="app_footer_info">Diminity v%1$s • GPLv3 Lisansı • Melih Uçgun</string>
 </resources>

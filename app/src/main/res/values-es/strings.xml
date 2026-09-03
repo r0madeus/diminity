@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Diminity</string>
+    <string name="header_subtitle">Reduce el brillo de tu pantalla a un nivel más cómodo.</string>
+
+    <string name="extra_dim_title">Atenuación extra</string>
+    <string name="status_active">Activo</string>
+    <string name="status_permission_required">Permiso requerido</string>
+    <string name="status_permission_granted">Permiso concedido</string>
+
+    <string name="theme_mode_title">Modo de tema</string>
+    <string name="theme_system">Sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+
+    <string name="background_protection_title">Protección en segundo plano</string>
+    <string name="background_protection_subtitle">Toca aquí para abrir la configuración, buscar Diminity y seleccionar \'Sin restricciones\' o \'No optimizar\' para evitar la interrupción del servicio.</string>
+
+    <string name="notification_permission_warning">Se requiere permiso de notificación para activar la atenuación extra.</string>
+
+    <string name="presets_title">Ajustes preestablecidos</string>
+    <string name="preset_balanced">Equilibrado</string>
+    <string name="preset_night_reading">Lectura nocturna</string>
+    <string name="preset_sleep">Sueño</string>
+    <string name="preset_reset">Restablecer</string>
+
+    <string name="dim_level_title">Nivel de atenuación</string>
+    <string name="blue_filter_title">Filtro de luz azul</string>
+    <string name="blue_filter_description">Aplica un tono cálido suave para reducir la fatiga visual y la luz azul. Diseñado para un uso cómodo y equilibrado en niveles medios.</string>
+
+    <string name="quick_settings_card_title">Añadir a Ajustes rápidos</string>
+    <string name="quick_settings_card_subtitle">Añade el mosaico de Diminity a tu panel de Ajustes rápidos.</string>
+    <string name="qs_status_added">Mosaico de Ajustes rápidos añadido.</string>
+    <string name="qs_status_already_added">El mosaico de Ajustes rápidos ya está añadido.</string>
+    <string name="qs_status_not_added">No se añadió el mosaico de Ajustes rápidos.</string>
+    <string name="qs_status_error">No se pudo añadir el mosaico de Ajustes rápidos.</string>
+    <string name="qs_status_unsupported">El sistema no admite la adición de mosaicos de Ajustes rápidos.</string>
+    <string name="qs_status_requires_android13">Añadir mosaicos de Ajustes rápidos requiere Android 13 o superior.</string>
+
+    <string name="overlay_permission_info">Se requiere el permiso \'Mostrar sobre otras aplicaciones\' para que la aplicación pueda atenuar la pantalla.</string>
+
+    <string name="service_notification_channel_name">Servicio de atenuación de Diminity</string>
+    <string name="service_notification_channel_description">Notificación que se muestra mientras la superposición de pantalla está activa</string>
+    <string name="service_notification_title">Diminity activo</string>
+    <string name="service_notification_content">La atenuación extra está activa actualmente.</string>
+    <string name="service_notification_action_stop">Detener</string>
+
+    <string name="qs_tile_label">Diminity</string>
+    <string name="qs_tile_subtitle_active">Activo</string>
+    <string name="qs_tile_subtitle_inactive">Desactivado</string>
+
+    <string name="open_github_repository">Abrir repositorio de GitHub de Diminity</string>
+    <string name="app_footer_info">Diminity v%1$s • Licencia GPLv3 • Melih Uçgun</string>
+</resources>

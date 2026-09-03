@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Diminity</string>
+    <string name="header_subtitle">Reduza o brilho da tela para um nível mais confortável.</string>
+
+    <string name="extra_dim_title">Atenuação extra</string>
+    <string name="status_active">Ativo</string>
+    <string name="status_permission_required">Permissão necessária</string>
+    <string name="status_permission_granted">Permissão concedida</string>
+
+    <string name="theme_mode_title">Modo de tema</string>
+    <string name="theme_system">Sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Escuro</string>
+
+    <string name="background_protection_title">Proteção em segundo plano</string>
+    <string name="background_protection_subtitle">Toque aqui para abrir as configurações, encontrar o Diminity e escolher \'Sem restrições\' ou \'Não otimizar\' para evitar a interrupção do serviço.</string>
+
+    <string name="notification_permission_warning">A permissão de notificação é necessária para ativar a atenuação extra.</string>
+
+    <string name="presets_title">Predefinições</string>
+    <string name="preset_balanced">Equilibrado</string>
+    <string name="preset_night_reading">Leitura noturna</string>
+    <string name="preset_sleep">Dormir</string>
+    <string name="preset_reset">Redefinir</string>
+
+    <string name="dim_level_title">Nível de atenuação</string>
+    <string name="blue_filter_title">Filtro de luz azul</string>
+    <string name="blue_filter_description">Aplica um tom suave e quente para reduzir o cansaço visual e a luz azul. Projetado para um uso confortável e equilibrado em níveis médios.</string>
+
+    <string name="quick_settings_card_title">Adicionar às Configurações rápidas</string>
+    <string name="quick_settings_card_subtitle">Adicione o bloco do Diminity ao seu painel de Configurações rápidas.</string>
+    <string name="qs_status_added">Bloco de Configurações rápidas adicionado.</string>
+    <string name="qs_status_already_added">O bloco de Configurações rápidas já foi adicionado.</string>
+    <string name="qs_status_not_added">O bloco de Configurações rápidas não foi adicionado.</string>
+    <string name="qs_status_error">Não foi possível adicionar o bloco de Configurações rápidas.</string>
+    <string name="qs_status_unsupported">O sistema não suporta a adição de blocos de Configurações rápidas.</string>
+    <string name="qs_status_requires_android13">Adicionar blocos de Configurações rápidas requer o Android 13 ou superior.</string>
+
+    <string name="overlay_permission_info">A permissão \'Sobrepor a outros apps\' é necessária para que o aplicativo possa escurecer a tela.</string>
+
+    <string name="service_notification_channel_name">Serviço de atenuação do Diminity</string>
+    <string name="service_notification_channel_description">Notificação exibida enquanto a sobreposição de tela está ativa</string>
+    <string name="service_notification_title">Diminity ativo</string>
+    <string name="service_notification_content">A atenuação extra está ativa no momento.</string>
+    <string name="service_notification_action_stop">Parar</string>
+
+    <string name="qs_tile_label">Diminity</string>
+    <string name="qs_tile_subtitle_active">Ativo</string>
+    <string name="qs_tile_subtitle_inactive">Desativado</string>
+
+    <string name="open_github_repository">Abrir repositório do Diminity no GitHub</string>
+    <string name="app_footer_info">Diminity v%1$s • Licença GPLv3 • Melih Uçgun</string>
+</resources>
