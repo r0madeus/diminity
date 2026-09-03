@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Stylized D Outer Loop -->
+    <path
+        android:pathData="M 38,28 C 64,28 78,38 78,54 C 78,70 64,80 38,80"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Vertical Slider Track (Spine of 'D') -->
+    <path
+        android:pathData="M 38,28 L 38,80"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+
+    <!-- Slider Thumb Knob -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 38,38 A 8,8 0 1,1 37.99,38 Z" />
+
+</vector>
