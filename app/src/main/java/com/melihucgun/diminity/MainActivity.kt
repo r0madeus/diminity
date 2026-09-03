@@ -44,7 +44,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -69,6 +68,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.melihucgun.diminity.data.AppThemeMode
 import com.melihucgun.diminity.data.DimSettingsRepository
@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val context = LocalContext.current
             val repository = remember { DimSettingsRepository.getInstance(context) }
-            val settingsState by repository.settingsFlow.collectAsState(initial = null)
+            val settingsState by repository.settingsFlow.collectAsStateWithLifecycle(initialValue = null)
             val themeMode = settingsState?.themeMode ?: AppThemeMode.SYSTEM
 
             DiminityTheme(themeMode = themeMode) {
@@ -123,7 +123,7 @@ fun DiminitySettingsScreen(
         )
     }
 
-    val settingsState by repository.settingsFlow.collectAsState(initial = null)
+    val settingsState by repository.settingsFlow.collectAsStateWithLifecycle(initialValue = null)
 
     var hasOverlayPermission by remember {
         mutableStateOf(
@@ -159,7 +159,7 @@ fun DiminitySettingsScreen(
         }
     }
 
-    val isServiceRunning = DimOverlayService.isRunning.value
+    val isServiceRunning by DimOverlayService.isRunning.collectAsStateWithLifecycle()
     val notificationPermissionWarningString = stringResource(R.string.notification_permission_warning)
 
     val notificationLauncher = rememberLauncherForActivityResult(

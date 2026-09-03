@@ -2,6 +2,7 @@ package com.melihucgun.diminity.data
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -32,6 +33,8 @@ data class DimSettings(
 class DimSettingsRepository private constructor(private val context: Context) {
 
     companion object {
+        private const val TAG = "DimSettingsRepository"
+
         private val KEY_DIM_LEVEL = floatPreferencesKey("dim_level")
         private val KEY_BLUE_FILTER_LEVEL = floatPreferencesKey("blue_filter_level")
         private val KEY_THEME_MODE = intPreferencesKey("theme_mode")
@@ -68,30 +71,46 @@ class DimSettingsRepository private constructor(private val context: Context) {
 
     suspend fun setDimLevel(dimLevel: Float) {
         val clampedDim = dimLevel.coerceIn(0.0f, 0.80f)
-        context.dataStore.edit { preferences ->
-            preferences[KEY_DIM_LEVEL] = clampedDim
+        try {
+            context.dataStore.edit { preferences ->
+                preferences[KEY_DIM_LEVEL] = clampedDim
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to save dim_level to DataStore", e)
         }
     }
 
     suspend fun setBlueFilterLevel(blueFilterLevel: Float) {
         val clampedBlue = blueFilterLevel.coerceIn(0.0f, 1.0f)
-        context.dataStore.edit { preferences ->
-            preferences[KEY_BLUE_FILTER_LEVEL] = clampedBlue
+        try {
+            context.dataStore.edit { preferences ->
+                preferences[KEY_BLUE_FILTER_LEVEL] = clampedBlue
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to save blue_filter_level to DataStore", e)
         }
     }
 
     suspend fun setSettings(dimLevel: Float, blueFilterLevel: Float) {
         val clampedDim = dimLevel.coerceIn(0.0f, 0.80f)
         val clampedBlue = blueFilterLevel.coerceIn(0.0f, 1.0f)
-        context.dataStore.edit { preferences ->
-            preferences[KEY_DIM_LEVEL] = clampedDim
-            preferences[KEY_BLUE_FILTER_LEVEL] = clampedBlue
+        try {
+            context.dataStore.edit { preferences ->
+                preferences[KEY_DIM_LEVEL] = clampedDim
+                preferences[KEY_BLUE_FILTER_LEVEL] = clampedBlue
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to save dim_level and blue_filter_level to DataStore", e)
         }
     }
 
     suspend fun setThemeMode(mode: AppThemeMode) {
-        context.dataStore.edit { preferences ->
-            preferences[KEY_THEME_MODE] = mode.ordinal
+        try {
+            context.dataStore.edit { preferences ->
+                preferences[KEY_THEME_MODE] = mode.ordinal
+            }
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to save theme_mode to DataStore", e)
         }
     }
 

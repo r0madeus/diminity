@@ -16,13 +16,14 @@ import android.os.IBinder
 import android.service.quicksettings.TileService
 import android.view.View
 import android.view.WindowManager
-import androidx.compose.runtime.mutableStateOf
 import androidx.core.app.NotificationCompat
 import com.melihucgun.diminity.data.DimSettingsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.pow
@@ -40,8 +41,8 @@ class DimOverlayService : Service() {
         const val CHANNEL_ID = "diminity_overlay_channel"
         const val NOTIFICATION_ID = 1001
 
-        var isRunning = mutableStateOf(false)
-            private set
+        private val _isRunning = MutableStateFlow(false)
+        val isRunning = _isRunning.asStateFlow()
     }
 
     private var windowManager: WindowManager? = null
@@ -65,7 +66,7 @@ class DimOverlayService : Service() {
             repository.settingsFlow.collectLatest { settings ->
                 currentDimLevel = settings.dimLevel
                 currentBlueFilterLevel = settings.blueFilterLevel
-                if (isRunning.value) {
+                if (_isRunning.value) {
                     showOrUpdateOverlay(currentDimLevel, currentBlueFilterLevel)
                 }
             }
@@ -81,12 +82,8 @@ class DimOverlayService : Service() {
                 return START_NOT_STICKY
             }
             ACTION_START, ACTION_UPDATE -> {
-                if ((intent != null) && intent.hasExtra(EXTRA_DIM_LEVEL)) {
-                    currentDimLevel = intent.getFloatExtra(EXTRA_DIM_LEVEL, currentDimLevel)
-                }
-                if ((intent != null) && intent.hasExtra(EXTRA_BLUE_FILTER_LEVEL)) {
-                    currentBlueFilterLevel = intent.getFloatExtra(EXTRA_BLUE_FILTER_LEVEL, currentBlueFilterLevel)
-                }
+                val hasDimExtra = intent?.hasExtra(EXTRA_DIM_LEVEL) == true
+                val hasBlueExtra = intent?.hasExtra(EXTRA_BLUE_FILTER_LEVEL) == true
 
                 val notification = createNotification()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -103,9 +100,24 @@ class DimOverlayService : Service() {
                     startForeground(NOTIFICATION_ID, notification)
                 }
 
-                isRunning.value = true
-                showOrUpdateOverlay(currentDimLevel, currentBlueFilterLevel)
+                _isRunning.value = true
                 requestTileUpdate()
+
+                if (hasDimExtra && hasBlueExtra) {
+                    currentDimLevel = intent.getFloatExtra(EXTRA_DIM_LEVEL, currentDimLevel)
+                    currentBlueFilterLevel = intent.getFloatExtra(EXTRA_BLUE_FILTER_LEVEL, currentBlueFilterLevel)
+                    showOrUpdateOverlay(currentDimLevel, currentBlueFilterLevel)
+                } else {
+                    serviceScope.launch {
+                        val repository = DimSettingsRepository.getInstance(this@DimOverlayService)
+                        val settings = repository.getSettingsOnce()
+                        currentDimLevel = settings.dimLevel
+                        currentBlueFilterLevel = settings.blueFilterLevel
+                        if (_isRunning.value) {
+                            showOrUpdateOverlay(currentDimLevel, currentBlueFilterLevel)
+                        }
+                    }
+                }
             }
         }
 
@@ -114,7 +126,7 @@ class DimOverlayService : Service() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        if (isRunning.value && (overlayView != null) && (layoutParams != null)) {
+        if (_isRunning.value && (overlayView != null) && (layoutParams != null)) {
             try {
                 windowManager?.updateViewLayout(overlayView, layoutParams)
             } catch (e: Exception) {
@@ -193,7 +205,7 @@ class DimOverlayService : Service() {
 
     private fun stopDimmingService() {
         removeOverlay()
-        isRunning.value = false
+        _isRunning.value = false
         requestTileUpdate()
         stopForeground(STOP_FOREGROUND_REMOVE)
         cancelNotification()
@@ -224,7 +236,7 @@ class DimOverlayService : Service() {
     override fun onDestroy() {
         serviceScope.cancel()
         removeOverlay()
-        isRunning.value = false
+        _isRunning.value = false
         requestTileUpdate()
         cancelNotification()
         super.onDestroy()
