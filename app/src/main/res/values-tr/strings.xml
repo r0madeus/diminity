@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Diminity</string>
+    <string name="header_subtitle">Ekranı daha rahat bir seviyeye indir.</string>
+
+    <string name="extra_dim_title">Ek karartma</string>
+    <string name="status_active">Aktif</string>
+    <string name="status_permission_required">İzin gerekli</string>
+    <string name="status_permission_granted">İzin verildi</string>
+
+    <string name="theme_mode_title">Tema modu</string>
+    <string name="theme_system">Sistem</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+
+    <string name="background_protection_title">Arka plan koruması</string>
+    <string name="background_protection_subtitle">Ayarları açmak için dokunun, listeden Diminity\'yi bulun ve servisin kapanmasını önlemek için \'Kısıtlanmamış\' veya \'Optimize etme\' seçeneğini belirleyin.</string>
+
+    <string name="notification_permission_warning">Ek karartmayı etkinleştirmek için bildirim izni gereklidir.</string>
+
+    <string name="presets_title">Hazır profiller</string>
+    <string name="preset_balanced">Dengeli</string>
+    <string name="preset_night_reading">Gece okuma</string>
+    <string name="preset_sleep">Uyku</string>
+    <string name="preset_reset">Sıfırla</string>
+
+    <string name="dim_level_title">Karartma seviyesi</string>
+    <string name="blue_filter_title">Mavi ışık filtresi</string>
+    <string name="blue_filter_description">Yumuşak sıcak ton uygulayarak göz yorulmasını ve mavi ışığı azaltır. Orta seviyelerde rahat ve dengeli kullanım için tasarlanmıştır.</string>
+
+    <string name="quick_settings_card_title">Hızlı ayarlara ekle</string>
+    <string name="quick_settings_card_subtitle">Hızlı Ayarlar paneline Diminity kutucuğunu ekleyin.</string>
+    <string name="qs_status_added">Hızlı Ayarlar kutucuğu eklendi.</string>
+    <string name="qs_status_already_added">Hızlı Ayarlar kutucuğu zaten ekli.</string>
+    <string name="qs_status_not_added">Hızlı Ayarlar kutucuğu eklenmedi.</string>
+    <string name="qs_status_error">Hızlı Ayarlar kutucuğu eklenemedi.</string>
+    <string name="qs_status_unsupported">Sistem hızlı ayarlar eklentisini desteklemiyor.</string>
+    <string name="qs_status_requires_android13">Hızlı Ayarlar kutucuğu ekleme Android 13 ve üzerini gerektirir.</string>
+
+    <string name="overlay_permission_info">Uygulamanın ekranı karartabilmesi için \'Diğer uygulamaların üzerinde gösterilme\' (overlay) izni gereklidir.</string>
+
+    <string name="service_notification_channel_name">Diminity Ek Karartma Servisi</string>
+    <string name="service_notification_channel_description">Ekran karartma overlaysi aktifken gösterilen bildirim</string>
+    <string name="service_notification_title">Diminity etkin</string>
+    <string name="service_notification_content">Ek karartma şu an çalışıyor.</string>
+
+    <string name="qs_tile_label">Diminity</string>
+    <string name="qs_tile_subtitle_active">Etkin</string>
+    <string name="qs_tile_subtitle_inactive">Kapalı</string>
+</resources>
